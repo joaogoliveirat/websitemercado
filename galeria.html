@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+
+{%block title%}
+
+Galeria de Waifus
+
+{%endblock%}
+
+{%block content%}
+
+<h1>Minha Galeria</h1>
+   <div class = 'row'>
+    
+    <div class = 'col-8'>col-8</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Picture</th>
+          <th scope="col">Price</th>
+          <th scope="col">Options</th>
+
+
+        </tr>
+
+
+      </thead>
+
+      <tbody>
+        {% for item in items %}
+          <tr>
+
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.picture}}</td>
+            <td>{{item.price}}</td>
+            <td>
+              <button class = "btn">
+                Sobre a Waifu  </button>
+                <button ckass = "btn">
+                  Divorciar
+                </button>
+            </td>
+
+          </tr>
+          {% endfor %}
+
+
+      </tbody>
+    </table>
+    
+
+   </div>
+
+{%endblock%}

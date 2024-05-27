@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+<head>
+    <link rel="stylesheet" href="styles.css"/>
+  </head>
+
+{%block title%}
+Register
+{%endblock%}
+
+{%block content%}
+<div class='container'>
+    <form method="POST" class = 'form-register'>
+        {{form.hidden_tag()}}
+        {{form.username.label()}}
+        {{form.username(class='form-control', placeholder = 'Username')}}
+    
+    
+    
+        {{form.email.label()}}
+        {{form.email(class='form-control', placeholder = 'Email Adress')}}
+    
+    
+
+    
+        {{form.password1.label()}}
+        {{form.password1(class='form-control', placeholder = 'Senha')}}
+    
+    
+
+
+
+    
+        {{form.password2.label()}}
+        {{form.password2(class='form-control', placeholder = 'Confirme a Senha')}}
+
+        {{form.submit(class='btn')}}
+
+        <div class="checkbox mb-3">
+            <h3>Já tem uma conta?</h3>
+            <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Entrar</a>
+         </div>
+    
+    
+</div>
+
+{%endblock%}

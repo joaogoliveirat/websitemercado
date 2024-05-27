@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>
+         {%block title%}
+         {%endblock%}
+      </title>
+      </link rel="stylesheet" href="static/styles.css"/>
+   </head>
+   <body>
+      <!-- Navbar Section -->
+      <nav class="navbar">
+         <div class="navbar__container">
+            <a href="#home" id="navbar__logo">Agência de Apostas do Paulete</a>
+            <div class="navbar__toggle" id="mobile-menu">
+               <span class="bar"></span> <span class="bar"></span>
+               <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+               <li class="navbar__item">
+                  <a href="{{url_for('home')}}" class="navbar__links" id="home-page">Home</a>
+               </li>
+               <li class="navbar__item">
+                  <a href="#about" class="navbar__links" id="apostas-page">Apostas Disponíveis</a>
+               </li>
+               <li class="navbar__item">
+                  <a href="{{url_for('lojadewaifus_page')}}" class="navbar__links" id="mercado-waifus"
+                     >Mercado de Waifus</a
+                     >
+               </li>
+               <li class="navbar__item">
+                  <a href="{{url_for('galeria_page')}}" class="navbar__links" id="minha-galeria"
+                     >Minha Galeria</a
+                     >
+               </li>
+               {% if current_user.is_authenticated %}
+               <li class="navbar__btn">
+                  <a href="{{url_for('logout_page')}}" class="button"  id="signup">Logout</a>
+               </li>
+               <li class="navbar__btn">
+                  <a href="{{url_for('register_page')}}" class="button"  >Seu Perfil</a>
+               </li>
+               <li class="navbar__item">
+                  <i>Saldo:{{current_user.mostrar_dinheiro}} </i>
+               </li>
+               {%else%}
+               <li class="navbar__btn">
+                  <a href="{{url_for('login_page')}}" class="button"  id="signup">Login</a>
+               </li>
+               <li class="navbar__btn">
+                  <a href="{{url_for('register_page')}}" class="button"  id="signup">Registre-se</a>
+               </li>
+            </ul>
+            {%endif%}
+         </div>
+      </nav>
+      {%with messages = get_flashed_messages(with_categories = true)%}
+      {%if messages%}
+      {%for category, message in messages%}
+      <div class = 'alert alert-{{category}}'>
+         <button type="button" class = 'm1-2 mb-1 close' data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
+         {{message}}
+      </div>
+      {%endfor%}
+      {%endif%}
+      {%endwith%}
+      {%block content%}
+      {%endblock%}
+      <section class="social__media">
+         <div class="social__media--wrap">
+            <div class="footer__logo">
+               <a href="/" id="footer__logo">AAP.</a>
+            </div>
+            <p class="website__rights">©Jaogler Corp. All rights reserved</p>
+            <div class="social__icons">
+               <a href="/" class="social__icon--link"
+                  ><i class="fab fa-instagram"></i
+                  ></a>
+               <a href="/" class="social__icon--link"
+                  ><i class="fab fa-youtube"></i
+                  ></a>
+               <a href="/" class="social__icon--link"
+                  ><i class="fab fa-github"></i
+                  ></a>
+               <a href="/" class="social__icon--link"
+                  ><i class="fab fa-twitter"></i
+                  ></a>
+            </div>
+         </div>
+      </section>
+      </div>
+      <script src="app.js"></script>
+</html>
